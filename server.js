@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 
 // MySQL connection setup
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "admin@321",
-  database: "event_fiesta"
+  host: "",
+  user: "",
+  password: "",
+  database: ""
 });
 
 db.connect((err) => {
