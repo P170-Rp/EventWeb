@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Fiesta 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌟 Welcome to Medha Event 2026 🌟</h1>
+        <p>Join us for a day full of excitement and fun!</p>
+    </header>
+
+    <section class="about">
+        <h2>About the Event</h2>
+        <p>
+            Medha is the annual cultural and talent festival organized by the Amrutvahini Sheti & Shikshan Vikas Sanstha (AVSS),
+            Sangamner. Students from Polytechnic and Engineering colleges participate in cultural events, competitions,
+            dance, music, drama, and meet celebrity guests.
+        </p>
+        <br>
+
+
+        <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2"
+             alt="Event Image"
+             style="width:100%; max-width:650px; border-radius:10px; margin-top:15px;">
+
+    </section>
+
+    <section class="forms">
+
+        <!-- Registration Form -->
+        <div class="form-box">
+            <h2>Registration Form</h2>
+
+            <form id="registerForm">
+                <label>Full Name:</label>
+                <input type="text" id="fullname" placeholder="Enter your full name" required><br>
+
+                <label>Email:</label>
+                <input type="email" id="regEmail" placeholder="Enter your email" required><br>
+
+                <label>Password:</label>
+                <input type="password" id="regPassword" placeholder="Create password" required><br>
+
+                <label>Phone:</label>
+                <input type="tel" id="phone" placeholder="Enter phone number" required><br>
+
+                <h4>Gender:</h4>
+                <label><input type="radio" name="gender" value="Male"> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other</label><br><br>
+
+                <label>Preferred Session:</label>
+                <select id="session">
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="evening">Evening</option>
+                </select><br><br>
+
+                <input type="submit" value="Register">
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-box">
+            <h2>Login Form</h2>
+
+            <form id="loginForm">
+                <label>Email:</label>
+                <input type="email" id="loginEmail" placeholder="Enter email" required><br>
+
+                <label>Password:</label>
+                <input type="password" id="loginPassword" placeholder="Enter password" required><br>
+
+                <input type="submit" value="Login">
+            </form>
+        </div>
+
+        <!-- Review Form -->
+        <div class="form-box">
+            <h2>Post-Event Review</h2>
+
+            <form id="reviewForm">
+                <label>Your Name:</label>
+                <input type="text" id="reviewName" placeholder="Enter your name"><br>
+
+                <label>Rate the Event:</label>
+                <select id="rating">
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select><br>
+
+                <label>Your Feedback:</label><br>
+                <textarea id="feedback" rows="4" cols="40" placeholder="Write your feedback here..."></textarea><br>
+
+                <input type="submit" value="Submit Review">
+            </form>
+        </div>
+
+    </section>
+
+
+<script>
+// Registration
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+        fullname: document.getElementById("fullname").value,
+        email: document.getElementById("regEmail").value,
+        password: document.getElementById("regPassword").value,
+        phone: document.getElementById("phone").value,
+        gender: document.querySelector("input[name=gender]:checked")?.value,
+        session: document.getElementById("session").value
+    };
+
+    const res = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    alert(result.message);
+});
+
+// Login
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+        email: document.getElementById("loginEmail").value,
+        password: document.getElementById("loginPassword").value
+    };
+
+    const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+        alert("Login Successful!");
+        window.location.href = "https://medha.assvs.org";   // Redirect
+    } else {
+        alert(result.message);
+    }
+});
+
+// Review
+document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+        reviewName: document.getElementById("reviewName").value,
+        rating: document.getElementById("rating").value,
+        feedback: document.getElementById("feedback").value
+    };
+
+    const res = await fetch("http://localhost:5000/review", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    alert(result.message);
+});
+</script>
+
+
+<footer>
+    <p>© 2025 Event Fiesta. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

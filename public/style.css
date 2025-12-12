@@ -1,0 +1,138 @@
+/* Reset & base setup */
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #ffdee9, #b5fffc);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  text-align: center;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 30px 10px;
+  border-bottom: 3px solid #fff;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1rem;
+}
+
+/* About Section */
+.about {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.about h2 {
+  font-size: 1.8rem;
+  color: #6a11cb;
+  margin-bottom: 15px;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+.about button{
+  width: 60%;
+  max-width: 800px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 5px 20px rgba(215, 33, 33, 0.2);
+}
+
+
+.about img {
+  width: 60%;
+  max-width: 800px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/*Forms section*/
+.forms {
+  display: flex;
+  justify-content: center;
+  flex-wrap: flex;
+  gap: 40px;
+  padding: 40px;
+}
+
+.form-box {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  width: 320px;
+  transition: transform 0.2s;
+}
+
+.form-box:hover {
+  transform: scale(1.03);
+}
+
+.form-box h2 {
+  text-align: center;
+  color: #6a11cb;
+  margin-bottom: 20px;
+}
+
+/* Inputs and Buttons */
+input, select, textarea {
+  width: 100%;
+  margin: 8px 0 15px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input[type="submit"] {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(90deg, #2575fc, #6a11cb);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #6a11cb;
+  color: white;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about img {
+    width: 90%;
+  }
+
+  .forms {
+    flex-direction: column;
+    align-items: center;
+  }
+}
