@@ -4,13 +4,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 
-// Initialize Express
+// initialize Express
 const app = express();
 app.use(cors());
 app.use(express.static("public"));
 app.use(bodyParser.json());
 
-// MySQL connection setup
+// mySQL connection setup
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
